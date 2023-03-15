@@ -7,10 +7,12 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [responseValue, setResponseValue] = useState(null);
+  const [query, setQuery] = useState(null);
+
   async function handleSubmit(text) {
     // debugger;
     const path =
-      "https://app.staging.baseten.co/routes/7qQlodP/flantest?query=" + text;
+      "https://app.staging.baseten.co/routes/7qQlodP/flantest?query=" + query;
     const response = await fetch(path, {
       method: "GET",
     });
@@ -29,13 +31,13 @@ export default function Home() {
       <main className={styles.main}>
         <input
           type="text"
-          onChange={(e) => handleSubmit(e.target.value)}
+          onChange={(e) => setQuery(e.target.value)}
           placeholder="Ask a math question"
           className="p-5 w-full"
         />
         <div> {responseValue}</div>
 
-        {/* <button onClick={handleSubmit}>Submit</button> */}
+        <button onClick={handleSubmit}>Submit</button>
       </main>
     </>
   );
