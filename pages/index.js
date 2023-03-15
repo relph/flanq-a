@@ -30,9 +30,11 @@ export default function Home() {
         <input
           type="text"
           onChange={(e) => handleSubmit(e.target.value)}
-          placeholder="Ask a question"
+          placeholder="Ask a math question"
+          className="p-5 w-full"
         />
-        {responseValue}
+        <div> {responseValue}</div>
+
         {/* <button onClick={handleSubmit}>Submit</button> */}
       </main>
     </>
