@@ -29,15 +29,23 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <input
-          type="text"
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Ask a math question"
-          className="p-5 w-full"
-        />
-        <div> {responseValue}</div>
+        <div className="flex gap-5 w-full">
+          <input
+            type="text"
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Ask a grade school math question"
+            className="p-5 w-full"
+          />
 
-        <button onClick={handleSubmit}>Submit</button>
+          <button onClick={handleSubmit} className="bg-blue-500 text-white p-5">
+            Submit
+          </button>
+        </div>
+
+        <div className="bg-white w-full p-5">
+          <h2 className=" font-semibold">Answer</h2>
+          {responseValue ? responseValue : "..."}
+        </div>
       </main>
     </>
   );
