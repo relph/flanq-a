@@ -73,7 +73,14 @@ export default function Home() {
             >
               GSM8K
             </a>{" "}
-            data set.
+            data set.{" "}
+            <a
+              href="https://github.com/relph/flanqanda"
+              target="_blank"
+              className="underline"
+            >
+              GitHub repo
+            </a>
           </p>
         </div>
       </main>
