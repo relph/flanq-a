@@ -6,11 +6,12 @@ import { useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [loading, setLoading] = useState(false);
   const [responseValue, setResponseValue] = useState(null);
   const [query, setQuery] = useState(null);
 
   async function handleSubmit(text) {
-    // debugger;
+    setLoading(true);
     const path =
       "https://app.staging.baseten.co/routes/7qQlodP/flantest?query=" + query;
     const response = await fetch(path, {
@@ -18,12 +19,13 @@ export default function Home() {
     });
     const data = await response.json();
     setResponseValue(data["output"]["flan_item"]);
+    setLoading(false);
   }
 
   return (
     <>
       <Head>
-        <title>My FLAN Q&A app</title>
+        <title>MATHLETE</title>
         <meta name="description" content="Fine-tuned Flan-T5 app" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -44,7 +46,35 @@ export default function Home() {
 
         <div className="bg-white w-full p-5">
           <h2 className=" font-semibold">Answer</h2>
-          {responseValue ? responseValue : "..."}
+          {loading ? (
+            <div>loading...</div>
+          ) : responseValue ? (
+            responseValue
+          ) : (
+            "..."
+          )}
+        </div>
+
+        <div>
+          <p className="text-sm text-gray-600">
+            Powered by{" "}
+            <a
+              href="https://blueprint.baseten.co/"
+              target="_blank"
+              className="underline"
+            >
+              Blueprint
+            </a>
+            . Traing on the{" "}
+            <a
+              href="https://huggingface.co/datasets/gsm8k"
+              target="_blank"
+              className="underline"
+            >
+              GSM8K
+            </a>{" "}
+            data set.
+          </p>
         </div>
       </main>
     </>
