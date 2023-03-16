@@ -65,7 +65,7 @@ export default function Home() {
             >
               Blueprint
             </a>
-            . Traing on the{" "}
+            . Trained on the{" "}
             <a
               href="https://huggingface.co/datasets/gsm8k"
               target="_blank"
